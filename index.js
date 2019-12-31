@@ -155,8 +155,15 @@ var css2less = function (css, options) {
 
 		rules.forEach(function (r, i) {
 			var parts = r.split(/[:]/gi);
-			var key = parts[0].trim();
-			var value = parts[1].trim();
+			var key = parts[0]
+			var value = parts[1]
+			if (!key) {
+				return false
+			}
+			key = key.trim()
+			if (typeof value === 'string') {
+				value.trim()
+			}
 
 			result.push(i > 0 ? "\n" : "", key);
 
@@ -187,8 +194,15 @@ var css2less = function (css, options) {
 
 			if ( isBase64(e) ) parts = [parts[0], parts[1] + parts[2]];
 
-			var key = parts[0].trim();
-			var value = parts[1].trim();
+			var key = parts[0]
+			var value = parts[1]
+			if (!key) {
+				return false
+			}
+			key = key.trim()
+			if (typeof value === 'string') {
+				value.trim()
+			}
 
 			if (!value) {
 				normal_rules[key] = "";
